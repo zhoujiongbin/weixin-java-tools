@@ -16,6 +16,7 @@ import com.github.binarywang.wxpay.constant.WxPayConstants.SignType;
 import com.github.binarywang.wxpay.constant.WxPayConstants.TradeType;
 import com.github.binarywang.wxpay.exception.WxPayException;
 import com.github.binarywang.wxpay.service.EntPayService;
+import com.github.binarywang.wxpay.service.WxCustomDeclareService;
 import com.github.binarywang.wxpay.service.WxPayService;
 import com.github.binarywang.wxpay.util.SignUtils;
 import com.google.common.base.Joiner;
@@ -53,6 +54,8 @@ public abstract class BaseWxPayServiceImpl implements WxPayService {
   private EntPayService entPayService = new EntPayServiceImpl(this);
 
   protected WxPayConfig config;
+
+  private WxCustomDeclareService wxCustomDeclareService = new WxCustomDeclareServiceImpl(this);
 
   @Override
   public EntPayService getEntPayService() {
@@ -660,5 +663,15 @@ public abstract class BaseWxPayServiceImpl implements WxPayService {
     }
 
     return responseContent;
+  }
+
+  @Override
+  public WxCustomDeclareService getWxCustomDeclareService() {
+    return wxCustomDeclareService;
+  }
+
+  @Override
+  public void setWxCustomDeclareService(WxCustomDeclareService wxCustomDeclareService) {
+    this.wxCustomDeclareService = wxCustomDeclareService;
   }
 }

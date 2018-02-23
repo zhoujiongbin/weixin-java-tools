@@ -430,4 +430,14 @@ public interface WxPayService {
    * @param limit     条数
    */
   String queryComment(Date beginDate, Date endDate, Integer offset, Integer limit) throws WxPayException;
+
+  /**
+   * 获取报关服务类
+   */
+  WxCustomDeclareService getWxCustomDeclareService();
+
+  /**
+   * 设置报关服务类，允许开发者自定义实现类
+   */
+  void setWxCustomDeclareService(WxCustomDeclareService wxCustomDeclareService);
 }
